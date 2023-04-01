@@ -22,9 +22,7 @@ const BasicTable = () => {
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
-              <th {...column.getHeaderGroupProps()}>
-                {column.render("Header")}
-              </th>
+              <th {...column.getHeaderProps()}>{column.render("Header")}</th>
             ))}
           </tr>
         ))}
@@ -34,10 +32,9 @@ const BasicTable = () => {
           prepareRow(row);
           return (
             <tr {...row.getRowProps()}>
-              {row.cells.map((cell) => {
-                return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
-              })}
-              <td></td>
+              {row.cells.map((cell) => (
+                <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+              ))}
             </tr>
           );
         })}
